@@ -17,6 +17,7 @@ Source2:	%{name}-install.jam
 Source3:	%{name}.desktop
 Source4:	%{name}.png
 Patch0:		%{name}-types.patch
+Patch1:		%{name}data-physfs.patch
 URL:		http://netpanzer.berlios.de/
 BuildRequires:	SDL-devel >= 1.2.5
 BuildRequires:	SDL_image-devel
@@ -74,6 +75,7 @@ Pliki graficzne i d¼wiêkowe dla netPanzera.
 %prep
 %setup -q -a1
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm -rf $RPM_BUILD_ROOT
