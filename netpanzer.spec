@@ -1,4 +1,3 @@
-#
 Summary:	Online multiplayer tactical warfare
 Summary(de):	Online multiplayer Echtzeitstrategiespiel
 Summary(pl):	Sieciowa gra strategiczna czasu rzeczywistego
@@ -15,11 +14,17 @@ Source2:	%{name}-install.jam
 Source3:	%{name}.desktop
 Source4:	%{name}.png
 URL:		http://netpanzer.berlios.de/
-BuildRequires:	jam
-BuildRequires:	physfs-devel >= 0.1.9
+BuildRequires:	SDL-devel >= 1.2.5
 BuildRequires:	SDL_image-devel
-BuildRequires:	SDL_mixer-devel
-BuildRequires:	SDL_net-devel
+BuildRequires:	SDL_mixer-devel >= 1.2
+BuildRequires:	SDL_net-devel >= 1.2.4
+BuildRequires:	autoconf >= 2.54
+BuildRequires:	automake
+BuildRequires:	jam
+BuildRequires:	libstdc++-devel >= 5:3.2.0
+BuildRequires:	libxml2-devel >= 2.0
+BuildRequires:	physfs-devel >= 0.1.9
+# only for ac/am; --with-wx-config must be passed to really use wx*
 BuildRequires:	wxWindows-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -85,7 +90,7 @@ cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_prefix},%{_desktopdir},%{_pixmapsdir}}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE4} $RPM_BUILD_ROOT%{_pixmapsdir}
 
@@ -95,6 +100,9 @@ jam install
 cd %{name}data-%{version}
 jam install
 
+# missing noinstall in Jamfiles
+rm -f $RPM_BUILD_ROOT%{_libdir}/libnetpanzer*.a
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -103,7 +111,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog README TODO
 %attr(755,root,root) %{_bindir}/netpanzer*
 %{_desktopdir}/%{name}.desktop
-%attr(755,root,root) %{_libdir}/libnetpanzer*.a
 %{_pixmapsdir}/%{name}.png
 
 %files data
