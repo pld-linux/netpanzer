@@ -1,11 +1,10 @@
 #
-# TODO:
-#	-PL descriptions
-#
 Summary:	Online multiplayer tactical warfare
+Summary(de):	Online multiplayer Echtzeitstrategiespiel
+Summary(pl):	Sieciowa gra strategiczna czasu rzeczywistego
 Name:		netpanzer
 Version:	0.1.3
-Release:	0.9
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Games
 Source0:	http://download.berlios.de/%{name}/%{name}-%{version}.tar.bz2
@@ -21,6 +20,7 @@ BuildRequires:	physfs-devel >= 0.1.9
 BuildRequires:	SDL_image-devel
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	SDL_net-devel
+BuildRequires:	wxWindows-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,13 +29,37 @@ play across the Internet and over LAN systems. netPanzer is designed
 for FAST ACTION combat - it is not another resource management clone.
 In fact, there aren't any resources at all.
 
+%description -l de
+netPanzer ist ein online multiplay Echtzeitstrategiespiel designt für
+schnelle aktionlastige Kämpfe. Das Spielprinzip konzentriert sich auf
+das wesentliche - kein Resourcenmanagemenet wird benötigt, stattdessen 
+kommt es auf schnelle taktische Bewegungen und Einheiten-Management in
+Echtzeit an. Die Kämpfe sind schnell und dauern lange an, weil zerstörte 
+Spieler mit einer Reihe neuer Einheiten neustarten. Spieler können einem
+Spiel jederzeit beitreten oder es verlassen.
+
+%description -l pl
+netPanzer jest sieciow± gr± strategiczn± czasu rzeczywistego
+zaprojektowany na szybk± rozgrywkê. Nie znajdziesz tutaj zarz±dzania
+zasobami, jedynie szybkie bitwy i d³ug± wojnê, gdy¿ zniszczeni gracze
+pojawiaj± siê znów w grze z kilkoma nowymi jednostkami. Gracze mog± w
+dowolnym momencie do³±czyæ do rozgrywki lub j± opu¶ciæ.
+
 %package data
 Summary:	Data files for netPanzer
+Summary(de):	Daten für netPanzer
+Summary(pl):	Pliki z danymi dla netPanzer
 Group:		X11/Applications/Games
 Requires:	netpanzer
 
 %description data
 Graphic and sound files required by netPanzer.
+
+%description data -l de
+Grafik- und Sounddateien für netPanzer.
+
+%description data -l pl
+Pliki graficzne i d¼wiêkowe dla netPanzer.
 
 %prep
 %setup -q -a1
@@ -46,10 +70,15 @@ rm -f mk/jam/install.jam %{name}data-%{version}/mk/jam/install.jam
 install %{SOURCE2} mk/jam/install.jam
 install %{SOURCE2} %{name}data-%{version}/mk/jam/install.jam
 
+%{__aclocal} -I mk/autoconf
+%{__autoconf}
 %configure
 jam
 
 cd %{name}data-%{version}
+
+%{__aclocal} -I mk/autoconf
+%{__autoconf}
 %configure
 jam
 cd ..
@@ -64,7 +93,7 @@ export DESTDIR=$RPM_BUILD_ROOT
 jam install
 
 cd %{name}data-%{version}
-jam install 
+jam install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
