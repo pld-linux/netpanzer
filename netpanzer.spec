@@ -1,14 +1,17 @@
+
+%define	_dataver	0.1.3
+
 Summary:	Online multiplayer tactical warfare
 Summary(de):	Online multiplayer Echtzeitstrategiespiel
 Summary(pl):	Sieciowa gra strategiczna czasu rzeczywistego
 Name:		netpanzer
-Version:	0.1.3
+Version:	0.1.5
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Games
 Source0:	http://download.berlios.de/%{name}/%{name}-%{version}.tar.bz2
-# Source0-md5:	bd593ff24f2228c574f89a61e9921b83
-Source1:	http://download.berlios.de/%{name}/%{name}data-%{version}.tar.bz2
+# Source0-md5:	2a3a39498e11b165b13eaca9d8d0a600
+Source1:	http://download.berlios.de/%{name}/%{name}data-%{_dataver}.tar.bz2
 # Source1-md5:	3080e48be7cb28bdb8f8b26dd84b3755
 Source2:	%{name}-install.jam
 Source3:	%{name}.desktop
@@ -18,6 +21,7 @@ BuildRequires:	SDL-devel >= 1.2.5
 BuildRequires:	SDL_image-devel
 BuildRequires:	SDL_mixer-devel >= 1.2
 BuildRequires:	SDL_net-devel >= 1.2.4
+BuildRequires:	SDL_ttf-devel >= 2.0.0
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	jam
@@ -70,17 +74,17 @@ Pliki graficzne i d¼wiêkowe dla netPanzer.
 %setup -q -a1
 
 %build
-rm -f mk/jam/install.jam %{name}data-%{version}/mk/jam/install.jam
+rm -rf $RPM_BUILD_ROOT
+rm -f %{name}data-%{_dataver}/mk/jam/install.jam
 
-install %{SOURCE2} mk/jam/install.jam
-install %{SOURCE2} %{name}data-%{version}/mk/jam/install.jam
+install %{SOURCE2} %{name}data-%{_dataver}/mk/jam/install.jam
 
 %{__aclocal} -I mk/autoconf
 %{__autoconf}
 %configure
 jam
 
-cd %{name}data-%{version}
+cd %{name}data-%{_dataver}
 
 %{__aclocal} -I mk/autoconf
 %{__autoconf}
@@ -97,11 +101,8 @@ install %{SOURCE4} $RPM_BUILD_ROOT%{_pixmapsdir}
 export DESTDIR=$RPM_BUILD_ROOT
 jam install
 
-cd %{name}data-%{version}
+cd %{name}data-%{_dataver}
 jam install
-
-# missing noinstall in Jamfiles
-rm -f $RPM_BUILD_ROOT%{_libdir}/libnetpanzer*.a
 
 %clean
 rm -rf $RPM_BUILD_ROOT
