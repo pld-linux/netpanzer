@@ -40,13 +40,11 @@ Graphic and sound files required by netPanzer.
 %setup -q -a1
 
 %build
-./configure \
-	--prefix=$RPM_BUILD_ROOT%{_prefix}
+%configure
 jam
 
 cd %{name}data-%{version}
-./configure \
-	--prefix=$RPM_BUILD_ROOT%{_prefix}
+%configure
 jam
 cd ..
 
@@ -54,10 +52,12 @@ cd ..
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_prefix}
 
-jam install
+#jam install \
+#	--prefix=$RPM_BUILD_ROOT
 
 cd %{name}data-%{version}
-jam install
+#jam install \
+#	--prefix=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
