@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=netPanzer
+Comment=Online multiplayer tactical warfare
+Icon=netpanzer.png
+Exec=netpanzer
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;
+# vi: encoding=utf-8
