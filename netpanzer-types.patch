@@ -1,0 +1,38 @@
+--- netpanzer-0.1.5/src/Lib/Util/FileSystem.cpp.orig	2003-11-26 23:42:24.000000000 +0100
++++ netpanzer-0.1.5/src/Lib/Util/FileSystem.cpp	2004-06-02 18:52:22.817312453 +0200
+@@ -378,7 +378,7 @@
+ 
+ int64_t ReadFile::readSLE64()
+ {
+-    int64_t val;
++    PHYSFS_sint64 val;
+     if(!PHYSFS_readSLE64(file, &val))
+         throw Exception("read error: %s", PHYSFS_getLastError());
+     return val;
+@@ -386,7 +386,7 @@
+ 
+ uint64_t ReadFile::readULE64()
+ {
+-    uint64_t val;
++    PHYSFS_uint64 val;
+     if(!PHYSFS_readULE64(file, &val))
+         throw Exception("read error: %s", PHYSFS_getLastError());
+     return val;
+@@ -394,7 +394,7 @@
+ 
+ int64_t ReadFile::readSBE64()
+ {
+-    int64_t val;
++    PHYSFS_sint64 val;
+     if(!PHYSFS_readSBE64(file, &val))
+         throw Exception("read error: %s", PHYSFS_getLastError());
+     return val;
+@@ -402,7 +402,7 @@
+ 
+ uint64_t ReadFile::readUBE64()
+ {
+-    uint64_t val;
++    PHYSFS_uint64 val;
+     if(!PHYSFS_readUBE64(file, &val))
+         throw Exception("read error: %s", PHYSFS_getLastError());
+     return val;
