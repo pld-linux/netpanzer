@@ -6,7 +6,7 @@ Summary(de):	Online multiplayer Echtzeitstrategiespiel
 Summary(pl):	Sieciowa gra strategiczna czasu rzeczywistego
 Name:		netpanzer
 Version:	0.1.5
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications/Games
 Source0:	http://download.berlios.de/%{name}/%{name}-%{version}.tar.bz2
