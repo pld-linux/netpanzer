@@ -24,7 +24,7 @@ BuildRequires:	SDL_net-devel >= 1.2.4
 BuildRequires:	SDL_ttf-devel >= 2.0.0
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
-BuildRequires:	jam
+BuildRequires:	boost-jam
 BuildRequires:	libstdc++-devel >= 5:3.2.0
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	physfs-devel >= 0.1.9
