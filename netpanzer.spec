@@ -14,7 +14,7 @@ Source0:	http://download.berlios.de/%{name}/%{name}-%{version}.tar.bz2
 # Source0-md5:	bd593ff24f2228c574f89a61e9921b83
 Source1:	http://download.berlios.de/%{name}/%{name}data-%{version}.tar.bz2
 # Source1-md5:	3080e48be7cb28bdb8f8b26dd84b3755
-Source2:	jam-install.jam
+Source2:	%{name}-install.jam
 URL:		http://netpanzer.berlios.de/
 BuildRequires:	jam
 BuildRequires:	physfs-devel >= 0.1.9
@@ -26,7 +26,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 netPanzer is an online multiplayer tactical warfare game designed for
 play across the Internet and over LAN systems. netPanzer is designed
-for FAST ACTION combat -- it is not another resource management clone.
+for FAST ACTION combat - it is not another resource management clone.
 In fact, there aren't any resources at all.
 
 %package data
