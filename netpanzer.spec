@@ -6,7 +6,7 @@ Summary(de):	Online multiplayer Echtzeitstrategiespiel
 Summary(pl):	Sieciowa gra strategiczna czasu rzeczywistego
 Name:		netpanzer
 Version:	0.1.5
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		X11/Applications/Games
 Source0:	http://download.berlios.de/%{name}/%{name}-%{version}.tar.bz2
@@ -16,6 +16,7 @@ Source1:	http://download.berlios.de/%{name}/%{name}data-%{_dataver}.tar.bz2
 Source2:	%{name}-install.jam
 Source3:	%{name}.desktop
 Source4:	%{name}.png
+Patch0:		%{name}-types.patch
 URL:		http://netpanzer.berlios.de/
 BuildRequires:	SDL-devel >= 1.2.5
 BuildRequires:	SDL_image-devel
@@ -57,9 +58,9 @@ dowolnym momencie do³±czyæ do rozgrywki lub j± opu¶ciæ.
 %package data
 Summary:	Data files for netPanzer
 Summary(de):	Daten für netPanzer
-Summary(pl):	Pliki z danymi dla netPanzer
+Summary(pl):	Pliki z danymi dla netPanzera
 Group:		X11/Applications/Games
-Requires:	netpanzer
+Requires:	%{name} = %{version}-%{release}
 
 %description data
 Graphic and sound files required by netPanzer.
@@ -68,10 +69,11 @@ Graphic and sound files required by netPanzer.
 Grafik- und Sounddateien für netPanzer.
 
 %description data -l pl
-Pliki graficzne i d¼wiêkowe dla netPanzer.
+Pliki graficzne i d¼wiêkowe dla netPanzera.
 
 %prep
 %setup -q -a1
+%patch0 -p1
 
 %build
 rm -rf $RPM_BUILD_ROOT
@@ -79,6 +81,7 @@ rm -f %{name}data-%{_dataver}/mk/jam/install.jam
 
 install %{SOURCE2} %{name}data-%{_dataver}/mk/jam/install.jam
 
+cp -f /usr/share/automake/config.* mk/autoconf
 %{__aclocal} -I mk/autoconf
 %{__autoconf}
 %configure
@@ -86,11 +89,11 @@ jam
 
 cd %{name}data-%{_dataver}
 
+cp -f /usr/share/automake/config.* mk/autoconf
 %{__aclocal} -I mk/autoconf
 %{__autoconf}
 %configure
 jam
-cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
