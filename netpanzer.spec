@@ -1,13 +1,13 @@
 #
 # TODO: everything :>
 #	OK, now serious
-#	-data subpackage
+#	-PL descriptions
 #	-another way to run ./configure, maybe more parameters?
 #
 Summary:	Online multiplayer tactical warfare
 Name:		netpanzer
 Version:	0.1.3
-Release:	0.0.2
+Release:	0.0.3
 License:	GPL v2
 Group:		X11/Applications/Games
 Source0:	http://download.berlios.de/%{name}/%{name}-%{version}.tar.bz2
@@ -16,7 +16,7 @@ Source1:	http://download.berlios.de/%{name}/%{name}data-%{version}.tar.bz2
 # Source1-md5:	3080e48be7cb28bdb8f8b26dd84b3755
 URL:		http://netpanzer.berlios.de/
 BuildRequires:	jam
-BuildRequires:	physfs >= 0.1.9
+BuildRequires:	physfs-devel >= 0.1.9
 BuildRequires:	SDL_image-devel
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	SDL_net-devel
@@ -28,6 +28,13 @@ play across the Internet and over LAN systems. netPanzer is designed
 for FAST ACTION combat -- it is not another resource management clone.
 In fact, there aren't any resources at all.
 
+%package data
+Summary:	Data files for netPanzer
+Group:		X11/Applications/Games
+Requires:	netpanzer
+
+%description data
+Graphic and sound files required by netPanzer.
 
 %prep
 %setup -q -a1
@@ -57,7 +64,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS CREDITS ChangeLog NEWS README THANKS TODO
+%doc ChangeLog README TODO
 %attr(755,root,root) %{_bindir}/netpanzer*
 %attr(755,root,root) %{_libdir}/libnetpanzer*.a
+
+%files data
+%defattr(644,root,root,755
 %{_datadir}/%{name}
