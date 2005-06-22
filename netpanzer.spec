@@ -1,23 +1,24 @@
-
-%define	_dataver	0.1.3
+# TODO:
+# - check why directories in data package are (example):
+# %{_datadir}/%{name}/units/pics/pak/pics/pak/WolfTSSD.pak not
+# %{_datadir}/%{name}/units/pics/pak/WolfTSSD.pak
+# This is the reason that game doesen't run proprty
 
 Summary:	Online multiplayer tactical warfare
 Summary(de):	Online multiplayer Echtzeitstrategiespiel
 Summary(pl):	Sieciowa gra strategiczna czasu rzeczywistego
 Name:		netpanzer
-Version:	0.1.5
-Release:	4
+Version:	0.8
+Release:	0.1
 License:	GPL v2
 Group:		X11/Applications/Games
 Source0:	http://download.berlios.de/%{name}/%{name}-%{version}.tar.bz2
-# Source0-md5:	2a3a39498e11b165b13eaca9d8d0a600
-Source1:	http://download.berlios.de/%{name}/%{name}data-%{_dataver}.tar.bz2
-# Source1-md5:	3080e48be7cb28bdb8f8b26dd84b3755
+# Source0-md5:	c08c1b703eac533407db02510deca68e
+Source1:	http://download.berlios.de/%{name}/%{name}-data-%{version}.tar.bz2
+# Source1-md5:	d2dbd5a6c38a181fa3b6aa9a68c81d2f
 Source2:	%{name}-install.jam
 Source3:	%{name}.desktop
 Source4:	%{name}.png
-Patch0:		%{name}-types.patch
-Patch1:		%{name}data-physfs.patch
 URL:		http://netpanzer.berlios.de/
 BuildRequires:	SDL-devel >= 1.2.5
 BuildRequires:	SDL_image-devel
@@ -74,14 +75,12 @@ Pliki graficzne i d¼wiêkowe dla netPanzera.
 
 %prep
 %setup -q -a1
-%patch0 -p1
-%patch1 -p1
 
 %build
 rm -rf $RPM_BUILD_ROOT
 rm -f %{name}data-%{_dataver}/mk/jam/install.jam
 
-install %{SOURCE2} %{name}data-%{_dataver}/mk/jam/install.jam
+install %{SOURCE2} %{name}-data-%{version}/mk/jam/install.jam
 
 cp -f /usr/share/automake/config.* mk/autoconf
 %{__aclocal} -I mk/autoconf
@@ -89,7 +88,7 @@ cp -f /usr/share/automake/config.* mk/autoconf
 %configure
 jam
 
-cd %{name}data-%{_dataver}
+cd %{name}-data-%{version}
 
 cp -f /usr/share/automake/config.* mk/autoconf
 %{__aclocal} -I mk/autoconf
@@ -99,15 +98,19 @@ jam
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir},%{_datadir}/netpanzer}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE4} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 export DESTDIR=$RPM_BUILD_ROOT
 jam install
-
-cd %{name}data-%{_dataver}
+cd %{name}-data-%{version}
 jam install
+
+for i in {cache,maps,pics,powerups,sound,units,wads};
+do
+  mv $RPM_BUILD_ROOT%{_datadir}/$i $RPM_BUILD_ROOT%{_datadir}/netpanzer/
+done
 
 %clean
 rm -rf $RPM_BUILD_ROOT
