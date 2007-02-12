@@ -5,8 +5,8 @@
 # This is the reason that game doesen't run proprty
 
 Summary:	Online multiplayer tactical warfare
-Summary(de):	Online multiplayer Echtzeitstrategiespiel
-Summary(pl):	Sieciowa gra strategiczna czasu rzeczywistego
+Summary(de.UTF-8):   Online multiplayer Echtzeitstrategiespiel
+Summary(pl.UTF-8):   Sieciowa gra strategiczna czasu rzeczywistego
 Name:		netpanzer
 Version:	0.8
 Release:	0.1
@@ -41,37 +41,37 @@ play across the Internet and over LAN systems. netPanzer is designed
 for FAST ACTION combat - it is not another resource management clone.
 In fact, there aren't any resources at all.
 
-%description -l de
-netPanzer ist ein online multiplay Echtzeitstrategiespiel designt für
-schnelle aktionlastige Kämpfe. Das Spielprinzip konzentriert sich auf
-das wesentliche - kein Resourcenmanagemenet wird benötigt, stattdessen 
+%description -l de.UTF-8
+netPanzer ist ein online multiplay Echtzeitstrategiespiel designt fÃ¼r
+schnelle aktionlastige KÃ¤mpfe. Das Spielprinzip konzentriert sich auf
+das wesentliche - kein Resourcenmanagemenet wird benÃ¶tigt, stattdessen 
 kommt es auf schnelle taktische Bewegungen und Einheiten-Management in
-Echtzeit an. Die Kämpfe sind schnell und dauern lange an, weil zerstörte 
-Spieler mit einer Reihe neuer Einheiten neustarten. Spieler können einem
+Echtzeit an. Die KÃ¤mpfe sind schnell und dauern lange an, weil zerstÃ¶rte 
+Spieler mit einer Reihe neuer Einheiten neustarten. Spieler kÃ¶nnen einem
 Spiel jederzeit beitreten oder es verlassen.
 
-%description -l pl
-netPanzer jest sieciow± gr± strategiczn± czasu rzeczywistego
-zaprojektowany na szybk± rozgrywkê. Nie znajdziesz tutaj zarz±dzania
-zasobami, jedynie szybkie bitwy i d³ug± wojnê, gdy¿ zniszczeni gracze
-pojawiaj± siê znów w grze z kilkoma nowymi jednostkami. Gracze mog± w
-dowolnym momencie do³±czyæ do rozgrywki lub j± opu¶ciæ.
+%description -l pl.UTF-8
+netPanzer jest sieciowÄ… grÄ… strategicznÄ… czasu rzeczywistego
+zaprojektowany na szybkÄ… rozgrywkÄ™. Nie znajdziesz tutaj zarzÄ…dzania
+zasobami, jedynie szybkie bitwy i dÅ‚ugÄ… wojnÄ™, gdyÅ¼ zniszczeni gracze
+pojawiajÄ… siÄ™ znÃ³w w grze z kilkoma nowymi jednostkami. Gracze mogÄ… w
+dowolnym momencie doÅ‚Ä…czyÄ‡ do rozgrywki lub jÄ… opuÅ›ciÄ‡.
 
 %package data
 Summary:	Data files for netPanzer
-Summary(de):	Daten für netPanzer
-Summary(pl):	Pliki z danymi dla netPanzera
+Summary(de.UTF-8):   Daten fÃ¼r netPanzer
+Summary(pl.UTF-8):   Pliki z danymi dla netPanzera
 Group:		X11/Applications/Games
 Requires:	%{name} = %{version}-%{release}
 
 %description data
 Graphic and sound files required by netPanzer.
 
-%description data -l de
-Grafik- und Sounddateien für netPanzer.
+%description data -l de.UTF-8
+Grafik- und Sounddateien fÃ¼r netPanzer.
 
-%description data -l pl
-Pliki graficzne i d¼wiêkowe dla netPanzera.
+%description data -l pl.UTF-8
+Pliki graficzne i dÅºwiÄ™kowe dla netPanzera.
 
 %prep
 %setup -q -a1
