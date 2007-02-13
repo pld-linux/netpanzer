@@ -5,8 +5,8 @@
 # This is the reason that game doesen't run proprty
 
 Summary:	Online multiplayer tactical warfare
-Summary(de.UTF-8):   Online multiplayer Echtzeitstrategiespiel
-Summary(pl.UTF-8):   Sieciowa gra strategiczna czasu rzeczywistego
+Summary(de.UTF-8):	Online multiplayer Echtzeitstrategiespiel
+Summary(pl.UTF-8):	Sieciowa gra strategiczna czasu rzeczywistego
 Name:		netpanzer
 Version:	0.8
 Release:	0.1
@@ -59,8 +59,8 @@ dowolnym momencie dołączyć do rozgrywki lub ją opuścić.
 
 %package data
 Summary:	Data files for netPanzer
-Summary(de.UTF-8):   Daten für netPanzer
-Summary(pl.UTF-8):   Pliki z danymi dla netPanzera
+Summary(de.UTF-8):	Daten für netPanzer
+Summary(pl.UTF-8):	Pliki z danymi dla netPanzera
 Group:		X11/Applications/Games
 Requires:	%{name} = %{version}-%{release}
 
