@@ -1,10 +1,9 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=netPanzer
 Comment=Online multiplayer tactical warfare
 Comment[de]=Online multiplayer echtzeitstrategiespiel
 Comment[pl]=Sieciowa gra strategiczna czasu rzeczywistego
-Icon=netpanzer.png
+Icon=netpanzer
 Exec=netpanzer
 Terminal=false
 Type=Application
