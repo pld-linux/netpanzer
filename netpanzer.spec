@@ -32,7 +32,7 @@ BuildRequires:	libstdc++-devel >= 5:3.2.0
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	physfs-devel >= 0.1.9
 # only for ac/am; --with-wx-config must be passed to really use wx*
-BuildRequires:	wxWindows-devel
+BuildRequires:	wxWidgets-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
